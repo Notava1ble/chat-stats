@@ -4,7 +4,7 @@ import { MessageSquare, ShieldCheck } from "lucide-react";
 
 const Navbar = () => {
   return (
-    <nav className="bg-primary/80 sticky top-0 z-100 w-full border-b px-8 py-6 text-white backdrop-blur-md">
+    <nav className="bg-primary/80 top-0 z-100 w-full border-b px-8 py-6 text-white backdrop-blur-md">
       <div className="mx-auto flex h-full items-center justify-between">
         <div className="flex items-center gap-2">
           <MessageSquare className="size-10" />
