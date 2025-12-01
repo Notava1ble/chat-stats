@@ -143,19 +143,19 @@ export default function FileUploader({ setFileContents }: FileUploaderProps) {
   };
 
   return (
-    <div className="mx-auto w-full max-w-md p-4">
+    <div className="mx-auto w-full max-w-lg p-4">
       <div
         {...getRootProps()}
         className={cn(
           "relative flex w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed px-6 py-10 transition-all duration-200 ease-in-out",
           // Normal State
-          "border-slate-300 bg-slate-50 hover:bg-slate-100",
+          "border-ring bg-muted/40 hover:bg-muted",
           // active drag state
-          isDragActive && "border-blue-500 bg-blue-50",
+          isDragActive && "border-primary bg-primary/5",
           // Error state
-          error && "border-red-300 bg-red-50",
+          error && "border-destructive bg-destructive/5",
           // Success state
-          fileSuccess && "border-green-300 bg-green-50",
+          fileSuccess && "border-success bg-success/5",
           // Disabled/Loading
           isLoading && "cursor-not-allowed opacity-50",
         )}
@@ -164,25 +164,27 @@ export default function FileUploader({ setFileContents }: FileUploaderProps) {
 
         {/* --- Loading State --- */}
         {isLoading ? (
-          <div className="flex flex-col items-center gap-2 text-slate-500">
+          <div className="text-muted-foreground flex flex-col items-center gap-2">
             <Loader2 className="h-10 w-10 animate-spin" />
             <p className="text-sm font-medium">Processing file...</p>
           </div>
         ) : fileSuccess ? (
           // --- Success State ---
           <div className="flex w-full items-center gap-4">
-            <div className="rounded-full bg-green-100 p-2">
+            <div className="bg-success/10 rounded-full p-2">
               {fileSuccess.type === "zip" ? (
-                <FileArchive className="h-6 w-6 text-green-600" />
+                <FileArchive className="text-success h-6 w-6" />
               ) : (
-                <FileText className="h-6 w-6 text-green-600" />
+                <FileText className="text-success h-6 w-6" />
               )}
             </div>
             <div className="min-w-0 flex-1">
-              <p className="truncate text-sm font-medium text-slate-900">
+              <p className="text-foreground truncate text-sm font-medium">
                 {fileSuccess.name}
               </p>
-              <p className="text-xs text-slate-500">Ready for processing</p>
+              <p className="text-muted-foreground text-xs">
+                Ready for processing
+              </p>
             </div>
             <button
               onClick={resetUploader}
@@ -196,18 +198,18 @@ export default function FileUploader({ setFileContents }: FileUploaderProps) {
           <>
             <div
               className={cn(
-                "mb-4 rounded-full bg-slate-100 p-4 transition-colors",
-                isDragActive && "bg-blue-100",
-                error && "bg-red-100",
+                "bg-muted/10 mb-4 rounded-full p-4 transition-colors",
+                isDragActive && "bg-primary/10",
+                error && "bg-destructive/10",
               )}
             >
               {error ? (
-                <AlertCircle className="h-8 w-8 text-red-500" />
+                <AlertCircle className="text-destructive h-8 w-8" />
               ) : (
                 <UploadCloud
                   className={cn(
-                    "h-8 w-8 text-slate-400",
-                    isDragActive && "text-blue-500",
+                    "text-muted-foreground h-8 w-8",
+                    isDragActive && "text-primary",
                   )}
                 />
               )}
@@ -215,16 +217,16 @@ export default function FileUploader({ setFileContents }: FileUploaderProps) {
 
             <div className="space-y-1 text-center">
               {error ? (
-                <p className="text-sm font-medium text-red-600">{error}</p>
+                <p className="text-destructive text-sm font-medium">{error}</p>
               ) : (
                 <>
-                  <p className="text-sm font-medium text-slate-900">
-                    <span className="text-blue-600 hover:underline">
+                  <p className="text-foreground text-sm font-medium">
+                    <span className="text-primary hover:underline">
                       Click to upload
                     </span>{" "}
                     or drag and drop
                   </p>
-                  <p className="text-xs text-slate-500">
+                  <p className="text-muted-foreground text-xs">
                     TXT or ZIP (containing single .txt)
                   </p>
                 </>
