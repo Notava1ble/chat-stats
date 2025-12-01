@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { roboto, robotoMono } from "../lib/fonts";
+import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
   title: "Whatsapp Chat Statistics",
@@ -18,6 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${roboto.variable} ${robotoMono.variable} antialiased`}>
+        <Navbar />
         {children}
       </body>
     </html>
