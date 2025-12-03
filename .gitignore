@@ -24,6 +24,7 @@
 .DS_Store
 *.pem
 testdata/
+devlog.md
 
 # debug
 npm-debug.log*

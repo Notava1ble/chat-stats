@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { Card, CardContent, CardHeader } from "../ui/card";
 
 const InfoCard = ({
   topic,
@@ -12,16 +13,16 @@ const InfoCard = ({
   extra: string;
 }) => {
   return (
-    <div className="bg-card rounded-lg border p-6 shadow-sm">
-      <h3 className="mb-4 text-sm font-medium uppercase">{topic}</h3>
-      <div className="flex items-center">
+    <Card className="gap-2">
+      <CardHeader className="text-sm font-medium uppercase">{topic}</CardHeader>
+      <CardContent className="flex items-center">
         {icon}
         <div>
           <div className="text-xl font-semibold">{main}</div>
           <div className="text-muted-foreground text-sm">{extra}</div>
         </div>
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
 };
 
